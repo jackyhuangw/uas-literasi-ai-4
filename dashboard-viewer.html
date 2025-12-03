@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pimpinan - Sistem Manajemen Agenda</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>Agenda Pimpinan</h1>
+            <div class="header-actions">
+                <span id="viewerName" class="user-name"></span>
+                <button onclick="logout()" class="btn-secondary">Logout</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Agenda List -->
+            <section class="agenda-section">
+                <div class="section-header">
+                    <h2>Jadwal Kegiatan</h2>
+                    <button onclick="window.print()" class="btn-secondary">Print Agenda</button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="">Semua Kategori</option>
+                        <option value="rapat_internal">Rapat Internal</option>
+                        <option value="pertemuan_klien">Pertemuan Klien</option>
+                        <option value="olahraga">Olahraga</option>
+                        <option value="perjalanan_bisnis">Perjalanan Bisnis</option>
+                        <option value="pribadi">Pribadi</option>
+                    </select>
+
+                    <input type="date" id="filterDate" class="filter-input">
+                </div>
+
+                <!-- Agenda Cards -->
+                <div id="agendaList" class="agenda-list">
+                    <p class="loading">Memuat agenda...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/viewer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Sistem Manajemen Agenda</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>Dashboard Admin</h1>
+            <div class="header-actions">
+                <span id="adminName" class="user-name"></span>
+                <button onclick="logout()" class="btn-secondary">Logout</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Add/Edit Agenda Form -->
+            <section class="form-section">
+                <h2 id="formTitle">Tambah Agenda Baru</h2>
+                <form id="agendaForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="title">Judul Agenda *</label>
+                            <input type="text" id="title" required placeholder="Contoh: Rapat Direksi">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Kategori *</label>
+                            <select id="category" required>
+                                <option value="">Pilih Kategori</option>
+                                <option value="rapat_internal">Rapat Internal</option>
+                                <option value="pertemuan_klien">Pertemuan Klien</option>
+                                <option value="olahraga">Olahraga</option>
+                                <option value="perjalanan_bisnis">Perjalanan Bisnis</option>
+                                <option value="pribadi">Pribadi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startTime">Waktu Mulai *</label>
+                            <input type="datetime-local" id="startTime" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endTime">Waktu Selesai *</label>
+                            <input type="datetime-local" id="endTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Lokasi *</label>
+                            <input type="text" id="location" required placeholder="Contoh: Ruang Rapat A">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reminderMinutes">Reminder (menit sebelumnya) *</label>
+                            <input type="number" id="reminderMinutes" value="30" min="5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Deskripsi</label>
+                        <textarea id="description" rows="3"
+                            placeholder="Tambahkan catatan atau detail agenda"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary" id="submitBtn">Tambah Agenda</button>
+                        <button type="button" class="btn-secondary" id="cancelBtn" style="display:none;">Batal</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Agenda List -->
+            <section class="agenda-section">
+                <div class="section-header">
+                    <h2>Daftar Agenda</h2>
+                    <button onclick="window.print()" class="btn-secondary">Print Agenda</button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="">Semua Kategori</option>
+                        <option value="rapat_internal">Rapat Internal</option>
+                        <option value="pertemuan_klien">Pertemuan Klien</option>
+                        <option value="olahraga">Olahraga</option>
+                        <option value="perjalanan_bisnis">Perjalanan Bisnis</option>
+                        <option value="pribadi">Pribadi</option>
+                    </select>
+
+                    <input type="date" id="filterDate" class="filter-input">
+                </div>
+
+                <!-- Agenda Cards -->
+                <div id="agendaList" class="agenda-list">
+                    <p class="loading">Memuat agenda...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

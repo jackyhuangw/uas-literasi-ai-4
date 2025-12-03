@@ -1,0 +1,93 @@
+/* css/print.css */
+
+@media print {
+
+    /* Hide non-printable elements */
+    .dashboard-header,
+    .form-section,
+    .filters,
+    .agenda-actions,
+    .btn-primary,
+    .btn-secondary,
+    .btn-edit,
+    .btn-delete,
+    .header-actions {
+        display: none !important;
+    }
+
+    /* Reset body */
+    body {
+        background: white;
+        color: black;
+    }
+
+    /* Dashboard container */
+    .dashboard-container {
+        background: white;
+    }
+
+    .dashboard-main {
+        padding: 0;
+    }
+
+    /* Agenda section */
+    .agenda-section {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .section-header {
+        margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+        font-size: 24px;
+        color: black;
+        border-bottom: 2px solid #333;
+        padding-bottom: 10px;
+    }
+
+    /* Agenda cards */
+    .agenda-card {
+        background: white;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+
+    .agenda-card:hover {
+        box-shadow: none;
+        transform: none;
+    }
+
+    .agenda-header h3 {
+        color: black;
+        font-size: 16px;
+    }
+
+    .category-badge {
+        background: #f0f0f0 !important;
+        color: black !important;
+        border: 1px solid #ccc;
+    }
+
+    .agenda-body p {
+        color: black;
+        font-size: 12px;
+    }
+
+    /* Page setup */
+    @page {
+        margin: 2cm;
+    }
+
+    /* Add print header */
+    .section-header::before {
+        content: "Daftar Agenda - " attr(data-print-date);
+        display: block;
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+}
